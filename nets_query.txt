@@ -1,5 +1,5 @@
 /* ====================================================== *\
- *   SQL fråga som hämtar alla kortbetalningar för en     *
+ *   SQL fråga som hämtar alla kortbetalningar per        *
  *   period.                                              *
 \* ====================================================== */
 
