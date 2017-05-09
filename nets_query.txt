@@ -1,3 +1,8 @@
+/* ====================================================== *\
+ *   SQL fråga som hämtar alla kortbetalningar för en     *
+ *   period.                                              *
+\* ====================================================== */
+
 SELECT  o.id, 
   CASE  WHEN c.company_name IS NULL OR c.company_name = '' THEN 'P' ELSE 'F' END AS o_type, 
 	c.firstname, 
