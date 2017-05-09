@@ -1,6 +1,7 @@
 /* ====================================================== *\
  *   SQL fråga som hämtar alla kortbetalningar per        *
  *   period.                                              *
+ *   Resultatet sparas som CSV fil.                       *
 \* ====================================================== */
 
 SELECT  o.id, 
