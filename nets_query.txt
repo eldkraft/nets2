@@ -1,0 +1,22 @@
+SELECT  o.id, 
+  CASE  WHEN c.company_name IS NULL OR c.company_name = '' THEN 'P' ELSE 'F' END AS o_type, 
+	c.firstname, 
+	c.lastname, 
+	ca.street_address,
+	ca.postcode,
+	ca.city,
+	ca.country,
+	o.total - o.total_vat AS xmoms,
+	o.total_vat,
+	o.total,
+	from_unixtime(o.date_ordered, '%Y/%m/%d') AS date_ordered
+FROM orders o
+INNER JOIN customers c
+ON o.customer_id = c.id
+INNER JOIN customers_addresses ca
+ON ca.customer_id = c.id
+WHERE o.payment_method_name = 'Kortbetalning'
+AND o.payment_status = 1
+AND date_ordered >= UNIX_TIMESTAMP('" . $start_datum .  " 00:00:00')
+AND date_ordered <= UNIX_TIMESTAMP('" . $slut_datum . " 23:59:59')
+ORDER BY o.id
